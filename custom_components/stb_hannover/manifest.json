@@ -1,0 +1,17 @@
+{
+  "domain": "stb_hannover",
+  "name": "Stadtbibliothek Hannover",
+  "codeowners": [
+    "@lagertonne"
+  ],
+  "config_flow": false,
+  "dependencies": [],
+  "documentation": "https://www.home-assistant.io/integrations/stb_hannover",
+  "homekit": {},
+  "iot_class": "cloud_polling",
+  "quality_scale": "bronze",
+  "requirements": ["beautifulsoup4", "aiohttp"],
+  "ssdp": [],
+  "zeroconf": [],
+  "version": "0.1"
+}
