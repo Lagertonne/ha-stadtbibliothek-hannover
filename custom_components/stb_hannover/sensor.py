@@ -66,14 +66,22 @@ class StbBookSensor(CoordinatorEntity, SensorEntity):
 
         self._available = True
 
-        self._attr_name: str = "attr_name"
+        self._attr_name: str = "loaned_books"
+        self.name: str = "loaned_books"
         # self._attr_device_class = SensorDeviceClass.AQI
-        self._attr_unique_id = f"attr_unique_id"
-        self._attr_native_value = self.coordinator.data["books"][0]["title"]
+        self._attr_unique_id = f"loaned_books_id"
+        self._attr_native_value = len(self.coordinator.data["books"])
 
     @property
     def available(self) -> bool:
         return self._available
+
+    @property
+    def extra_state_attributes(self) -> dict:
+        attributes = {}
+        attributes["books"] = self.coordinator.data["books"]
+
+        return attributes
 
     @callback
     def _handle_coordinator_update(self) -> None:
