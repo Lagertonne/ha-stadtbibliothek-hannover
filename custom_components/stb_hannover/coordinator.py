@@ -133,7 +133,7 @@ class StbUpdateCoordinator(DataUpdateCoordinator):
             hass,
             LOGGER,
             name="STB Hannover",
-            update_interval=timedelta(hours=3),
+            update_interval=timedelta(hours=1),
         )
 
         self.api = api
