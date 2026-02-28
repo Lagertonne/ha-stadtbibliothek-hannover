@@ -96,11 +96,11 @@ class StbBookSensor(CoordinatorEntity, SensorEntity):
 
         self._available = True
 
-        self._attr_name: str = "loaned_books"
-        self.name: str = "loaned_books"
-        # self._attr_device_class = SensorDeviceClass.AQI
-        self._attr_unique_id = f"loaned_books_id"
-        self._attr_native_value = len(self.coordinator.data["books"])
+        self._attr_has_entity_name = True
+        self._attr_name: str = f"loaned_books_{coordinator.api._username}"
+        self._attr_unique_id = "loaned books_1707"
+        self.name: str = f"Loaned Books from {coordinator.api._username}"
+        self._attr_icon = "mdi:library-books"
 
     @property
     def available(self) -> bool:
@@ -113,11 +113,13 @@ class StbBookSensor(CoordinatorEntity, SensorEntity):
 
         return attributes
 
-    @callback
-    def _handle_coordinator_update(self) -> None:
-        """Handle updated data from the coordinator."""
-        self._attr_native_value = self.coordinator.data
-        self.async_write_ha_state()
+    @property
+    def native_value(self):
+        return len(self.coordinator.data["books"])
+
+    @property
+    def unit_of_measurement(self):
+        return "books loaned"
 
     async def async_update(self) -> None:
         """Fetch new state data for the sensor."""
