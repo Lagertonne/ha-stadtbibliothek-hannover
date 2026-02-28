@@ -8,6 +8,8 @@ from bs4 import BeautifulSoup
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
 
+from datetime import datetime
+
 from .const import LOGGER
 
 
@@ -116,9 +118,9 @@ class StbApi:
                 elif key == "ausgeliehen in":
                     book["rental_place"] = data.contents[0].strip()
                 elif key == "Ausleihdatum":
-                    book["loan_date"] = data.contents[0].strip()
+                    book["loan_date"] = datetime.strptime(data.contents[0].strip(), "%d.%m.%Y")
                 elif key == "Rückgabedatum":
-                    book["return_date"] = data.find("b").contents[0].strip()
+                    book["return_date"] = datetime.strptime(data.find("b").contents[0].strip(), "%d.%m.%Y")
 
             books.append(book)
 
