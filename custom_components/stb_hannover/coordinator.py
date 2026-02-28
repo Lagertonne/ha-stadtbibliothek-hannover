@@ -147,5 +147,4 @@ class StbUpdateCoordinator(DataUpdateCoordinator):
                 "books": books,
             }
 
-            LOGGER.debug(result["books"][0]["title"])
             return result
