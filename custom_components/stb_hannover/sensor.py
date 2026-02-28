@@ -58,6 +58,36 @@ async def async_setup_platform(
         raise PlatformNotReady("Failed to get data from STB Hannover")
 
     async_add_entities([StbBookSensor(coordinator)])
+    async_add_entities([StbNextReturnSensor(coordinator)])
+
+
+class StbNextReturnSensor(CoordinatorEntity, SensorEntity):
+    def __init__(self, coordinator: StbUpdateCoordinator) -> None:
+        super().__init__(coordinator)
+
+        self._attr_name: str = "next_book_return_{coordinator.api._username}"
+        self.attrs = {}
+
+    @property
+    def device_class(self):
+        return SensorDeviceClass.DATE
+
+    @property
+    def name(self):
+        return "Next return date"
+
+    @property
+    def native_value(self):
+        earliest_book = None
+
+        for book in self.coordinator.data["books"]:
+            if earliest_book == None:
+                earliest_book = book
+            else:
+                if book["return_date"] < earliest_book["return_date"]:
+                    earliest_book = book
+
+        return earliest_book["return_date"]
 
 
 class StbBookSensor(CoordinatorEntity, SensorEntity):
