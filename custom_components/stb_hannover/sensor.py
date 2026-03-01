@@ -18,6 +18,8 @@ from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
+from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
+
 from .const import (
     CONF_USERNAME,
     CONF_PASSWORD,
