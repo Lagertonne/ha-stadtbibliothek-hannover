@@ -76,7 +76,7 @@ class StbNextReturnSensor(CoordinatorEntity, SensorEntity):
 
     @property
     def name(self):
-        return f"Next return date {coordinator.api._username}"
+        return f"Next return date {self.coordinator.api._username}"
 
     @property
     def native_value(self):
