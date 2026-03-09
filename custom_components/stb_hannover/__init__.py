@@ -9,5 +9,5 @@ CONFIG_SCHEMA = cv.platform_only_config_schema(DOMAIN)
 
 
 async def async_setup(hass: core.HomeAssistant, config: dict) -> bool:
-    """Set up the aha component."""
+    """Set up the StB component."""
     return True
