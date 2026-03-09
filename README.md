@@ -25,7 +25,8 @@ After configuration, you should have to new sensors:
 
 ## Known/Potential issues
   * No experience what happens when no book is currently loaned
-  * Multi-User is not tested
+  * Loaned books stops at 10 (first page)
+  * Multi-User does not work so far
   * No releases/versioning
   * Refresh has not been tested
   * The integration refreshes the state every hour, keep this in mind when returning books and not seeing an immediate change
