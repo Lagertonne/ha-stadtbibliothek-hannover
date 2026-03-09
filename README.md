@@ -25,7 +25,9 @@ After configuration, you should have to new sensors:
 
 ## Known/Potential issues
   * No experience what happens when no book is currently loaned
-  * Loaned books stops at 10 (first page)
+  * Loaned books stops at 10 (first page), further need to be collected
+  * user stats like loaned number, open fees, expiration date are missing
+  * loans can not extended
   * Multi-User does not work so far
   * No releases/versioning
   * Refresh has not been tested
